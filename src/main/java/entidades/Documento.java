@@ -5,11 +5,13 @@
  */
 package entidades;
 
+import java.io.Serializable;
+
 /**
  *
  * @author lauti
  */
-public class Documento {
+public class Documento implements Serializable{
     
     private String nombre;
     private String ruta;

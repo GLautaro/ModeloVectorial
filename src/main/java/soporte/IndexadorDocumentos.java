@@ -85,7 +85,6 @@ public class IndexadorDocumentos {
                 for (int i = 0; i < cantPalabras; i++) {
                     String palabraLimpia = limpiarPalabra(st.nextToken());
                     if(palabraLimpia.trim().length() > 1){
-                        System.out.println(palabraLimpia);
                         vocabulario.agregarPosteo(nuevoDoc, separador);                                                
                     }                                       
                 }
