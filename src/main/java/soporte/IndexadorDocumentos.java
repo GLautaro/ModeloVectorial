@@ -12,6 +12,7 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.Arrays;
 import java.util.List;
+import java.util.StringTokenizer;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import utils.Constantes;
@@ -29,7 +30,7 @@ public class IndexadorDocumentos {
     private FilenameFilter filtro;
 
     public IndexadorDocumentos() {
-        this.rutaCarpeta = Constantes.RUTA_ARCHIVO_DOCUMENTOS;
+        this.rutaCarpeta = Constantes.RUTA_CARPETA_DOCUMENTOS;
         vocabulario =  new Vocabulario();
         filtro = new FilenameFilter() {
             @Override
@@ -56,16 +57,78 @@ public class IndexadorDocumentos {
             Logger.getLogger(IndexadorDocumentos.class.getName()).log(Level.SEVERE, null, ex);
         }
         listaDoc = carpeta.listFiles(filtro);
-        System.out.println(Arrays.toString(listaDoc));
-        
-        
-
-       
-        
-        
-        
+        for (File file : listaDoc) {
+            leerDocumentos(file);
+        }
+      
     } 
     
+    
+    private void leerDocumentos(File documento){
+        
+        try {
+            FileReader fr = new FileReader(documento);
+            BufferedReader br = new BufferedReader(fr);
+            String lineaTexto = br.readLine();            
+            String separador = Constantes.SEPARADORES;
+            
+            String nombreDocumento = documento.getName();
+            String rutaDocumento = documento.getPath();
+            
+            Documento nuevoDoc = new Documento(nombreDocumento, rutaDocumento);
+                    
+            
+            while (lineaTexto != null) {
+                StringTokenizer st = new StringTokenizer(lineaTexto, separador);
+                int cantPalabras = st.countTokens();
+                
+                for (int i = 0; i < cantPalabras; i++) {
+                    String palabraLimpia = limpiarPalabra(st.nextToken());
+                    if(palabraLimpia.trim().length() > 1){
+                        System.out.println(palabraLimpia);
+                        vocabulario.agregarPosteo(nuevoDoc, separador);                                                
+                    }                                       
+                }
+                lineaTexto = br.readLine();
+                                
+            }
+            
+                       
+            
+                        
+        } catch (FileNotFoundException ex) {
+            Logger.getLogger(IndexadorDocumentos.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IOException ex) {
+            Logger.getLogger(IndexadorDocumentos.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+
+        
+    }
+    
+    
+    private String limpiarPalabra(String token){
+        String palabraLimpia = limpiarVocales(token);
+        palabraLimpia = palabraLimpia.toLowerCase();
+     
+        return palabraLimpia;
+    }
+    
+    
+    private String limpiarVocales(String token){
+        String original = "áàäéèëíìïóòöúùüç";
+        String modificacion = "aaaeeeiiiooouuuc";
+    
+        for (int z = 0; z < original.length(); z++) {
+            token = token.replace(original.charAt(z), modificacion.charAt(z));
+        }
+     
+        return token;
+    }
+
+    public Vocabulario getVocabulario() {
+        return vocabulario;
+    }
         
     
     

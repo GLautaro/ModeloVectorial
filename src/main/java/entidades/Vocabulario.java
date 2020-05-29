@@ -20,6 +20,10 @@ public class Vocabulario implements Serializable{
         vocabulario = new HashMap<>();
     }
 
+    public HashMap<String, Termino> getVocabulario() {
+        return vocabulario;
+    }
+    
     
     public Termino getTermino (String palabra){
         return vocabulario.get(palabra);
@@ -27,6 +31,18 @@ public class Vocabulario implements Serializable{
     
     public boolean existeTermino(String palabra){
         return vocabulario.containsKey(palabra);
+    }
+    
+    public void agregarPosteo(Documento doc, String ter){
+        Termino t;
+        if((t = vocabulario.get(ter)) != null){
+            t.agregarPosteo(doc);
+        }
+        else{
+            t = new Termino(ter);
+            t.agregarPosteo(doc);
+            vocabulario.put(ter, t);
+        } 
     }
     
     

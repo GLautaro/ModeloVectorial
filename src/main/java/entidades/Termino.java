@@ -23,6 +23,14 @@ public class Termino implements Serializable{
     //Posteo: significa que la palabra aparezca en un documento. Se almacena el documento y la Tf 
     private HashMap<Documento, Integer> posteos;
 
+    public Termino(String palabra) {
+        this.palabra = palabra;
+        nr = 0;
+        maxTf = 1;
+        posteos = new HashMap<>();
+    }
+    
+
     public String getPalabra() {
         return palabra;
     }
@@ -64,7 +72,23 @@ public class Termino implements Serializable{
             this.maxTf = maxTf;
         }
     }
+
+    void agregarPosteo(Documento doc) {
+        if(posteos.containsKey(doc)){
+            incrementarPosteo(doc);
+        }
+        else{
+            posteos.put(doc, 1);
+            nr++;
+        }
+        
+    }
     
+    private void incrementarPosteo(Documento doc){
+        Integer frecNueva = posteos.get(doc);
+        maxTf = Math.max(frecNueva, maxTf);
+        posteos.replace(doc, frecNueva);
+    }
     
     
 }

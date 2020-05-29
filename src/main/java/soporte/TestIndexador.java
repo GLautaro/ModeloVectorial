@@ -15,6 +15,8 @@ public class TestIndexador {
         IndexadorDocumentos inDoc = new IndexadorDocumentos();
         
         inDoc.indexarDocumentos();
+        
+        System.out.println(inDoc.getVocabulario().toString());
     }
     
 }
