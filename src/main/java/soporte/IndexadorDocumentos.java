@@ -5,10 +5,16 @@
  */
 package soporte;
 
+import entidades.Documento;
 import entidades.Vocabulario;
 import java.io.*;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.Arrays;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import utils.Constantes;
 
 /**
  *
@@ -19,11 +25,11 @@ public class IndexadorDocumentos {
     private String rutaCarpeta;
     private File carpeta;
     private Vocabulario vocabulario;
-    private List<File> listaArchivos;
+    private File[] listaDoc;
     private FilenameFilter filtro;
 
-    public IndexadorDocumentos(String rutaCarpeta) {
-        this.rutaCarpeta = rutaCarpeta;
+    public IndexadorDocumentos() {
+        this.rutaCarpeta = Constantes.RUTA_ARCHIVO_DOCUMENTOS;
         vocabulario =  new Vocabulario();
         filtro = new FilenameFilter() {
             @Override
@@ -44,6 +50,17 @@ public class IndexadorDocumentos {
     
     public void indexarDocumentos(){
         inicializarCarpeta();
+        try {
+            System.out.println(carpeta.getCanonicalPath());
+        } catch (IOException ex) {
+            Logger.getLogger(IndexadorDocumentos.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        listaDoc = carpeta.listFiles(filtro);
+        System.out.println(Arrays.toString(listaDoc));
+        
+        
+
+       
         
         
         

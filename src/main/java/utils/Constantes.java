@@ -3,18 +3,14 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package soporte;
+package utils;
 
 /**
  *
  * @author lauti
  */
-public class TestIndexador {
+public class Constantes {
     
-    public static void main(String[] args) {
-        IndexadorDocumentos inDoc = new IndexadorDocumentos();
-        
-        inDoc.indexarDocumentos();
-    }
-    
+    public static final String RUTA_ARCHIVO_DOCUMENTOS = "";
+
 }
