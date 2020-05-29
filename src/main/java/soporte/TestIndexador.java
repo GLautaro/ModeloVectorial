@@ -17,8 +17,7 @@ public class TestIndexador {
         
         inDoc.indexarDocumentos();
         ser.writeVocabulario(inDoc.getVocabulario());
-        
-        System.out.println(inDoc.getVocabulario().toString());
+        ser.readVocabulario();
     }
     
 }

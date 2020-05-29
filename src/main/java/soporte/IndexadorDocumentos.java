@@ -30,7 +30,7 @@ public class IndexadorDocumentos {
     private FilenameFilter filtro;
 
     public IndexadorDocumentos() {
-        this.rutaCarpeta = Constantes.RUTA_CARPETA_DOCUMENTOS;
+        this.rutaCarpeta = "C:\\Users\\agu_9\\Desktop\\Iteracion";
         vocabulario =  new Vocabulario();
         filtro = new FilenameFilter() {
             @Override
@@ -85,14 +85,14 @@ public class IndexadorDocumentos {
                 for (int i = 0; i < cantPalabras; i++) {
                     String palabraLimpia = limpiarPalabra(st.nextToken());
                     if(palabraLimpia.trim().length() > 1){
-                        vocabulario.agregarPosteo(nuevoDoc, separador);                                                
+                        vocabulario.agregarPosteo(nuevoDoc, palabraLimpia);  
+                       
                     }                                       
                 }
                 lineaTexto = br.readLine();
                                 
             }
-            
-                       
+             
             
                         
         } catch (FileNotFoundException ex) {
