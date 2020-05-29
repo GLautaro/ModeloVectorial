@@ -15,7 +15,7 @@ import java.util.List;
 import java.util.StringTokenizer;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import utils.Constantes;
+import utils.Configuracion;
 
 /**
  *
@@ -30,7 +30,7 @@ public class IndexadorDocumentos {
     private FilenameFilter filtro;
 
     public IndexadorDocumentos() {
-        this.rutaCarpeta = Constantes.RUTA_CARPETA_DOCUMENTOS;
+        this.rutaCarpeta = Configuracion.RUTA_CARPETA_DOCUMENTOS;
         vocabulario =  new Vocabulario();
         filtro = new FilenameFilter() {
             @Override
@@ -70,7 +70,7 @@ public class IndexadorDocumentos {
             FileReader fr = new FileReader(documento);
             BufferedReader br = new BufferedReader(fr);
             String lineaTexto = br.readLine();            
-            String separador = Constantes.SEPARADORES;
+            String separador = Configuracion.SEPARADORES;
             
             String nombreDocumento = documento.getName();
             String rutaDocumento = documento.getPath();
@@ -85,7 +85,7 @@ public class IndexadorDocumentos {
                 for (int i = 0; i < cantPalabras; i++) {
                     String palabraLimpia = limpiarPalabra(st.nextToken());
                     if(palabraLimpia.trim().length() > 1){
-                        vocabulario.agregarPosteo(nuevoDoc, separador);                                                
+                        vocabulario.agregarPosteo(nuevoDoc, palabraLimpia);                                                
                     }                                       
                 }
                 lineaTexto = br.readLine();

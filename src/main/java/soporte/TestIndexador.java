@@ -5,6 +5,9 @@
  */
 package soporte;
 
+import entidades.Vocabulario;
+import java.util.HashMap;
+
 /**
  *
  * @author lauti
@@ -16,6 +19,12 @@ public class TestIndexador {
         Serializador ser = new Serializador();
         
         inDoc.indexarDocumentos();
+        Vocabulario voc = inDoc.getVocabulario();
+        HashMap hs = voc.getVocabulario();
+        System.out.println(hs.size());
+        
+        
+        
         ser.writeVocabulario(inDoc.getVocabulario());
         
         System.out.println(inDoc.getVocabulario().toString());
