@@ -16,3 +16,4 @@ public class Configuracion {
     public static final String SEPARADORES = "[1234567890,-.!¡?¿()_ /:%&;#\"$*{}]$=+@|°¬'+~^<>«»*";
 
 }
+

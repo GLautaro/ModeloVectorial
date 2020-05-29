@@ -6,6 +6,7 @@
 package soporte;
 
 import controlador.ModeloVectorial;
+
 import entidades.Vocabulario;
 import java.util.HashMap;
 
@@ -23,14 +24,15 @@ public class TestIndexador {
         Vocabulario voc = inDoc.getVocabulario();
         HashMap hs = voc.getVocabulario();
         System.out.println(hs.size());
-      
+
         ser.writeVocabulario(inDoc.getVocabulario());
         ser.readVocabulario();
+
         System.out.println(inDoc.getVocabulario().toString());
         
         ModeloVectorial mv = new ModeloVectorial();
         mv.procesarBusqueda("Copyright laws", 2);
-        
+
     }
     
 }
