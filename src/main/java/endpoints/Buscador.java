@@ -9,6 +9,7 @@ import controlador.ModeloVectorial;
 import entidades.Documento;
 import static java.nio.file.Files.list;
 import java.util.List;
+import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
 import javax.ws.rs.GET;
 import javax.ws.rs.core.Response;
@@ -21,14 +22,16 @@ import javax.ws.rs.QueryParam;
  *
  * @author agu_9
  */
+
 @Path("/buscador")
 public class Buscador {
-
+    
+    @Inject ModeloVectorial mv;
+    
     @GET
     @Path("/")
     @Produces("application/json")
     public Response buscar(@QueryParam("q") String q, @QueryParam("r") Integer r) {
-        ModeloVectorial mv = new ModeloVectorial();
         List<Documento> resultado = mv.procesarBusqueda(q, r);
         return Response.ok(resultado).build();
     }

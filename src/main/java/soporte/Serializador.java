@@ -24,6 +24,11 @@ import utils.Configuracion;
  */
 public class Serializador {
 
+    public Serializador() {
+    }
+    
+    
+    
     public void writeVocabulario(Vocabulario vocabulario) {
         try {
             FileOutputStream fos = new FileOutputStream("vocabulario.dat");
@@ -55,6 +60,7 @@ public class Serializador {
             c.printStackTrace();
             
         }
+        System.out.println("SERIALIZA");
         return vocabulario;
         
     }
@@ -90,6 +96,7 @@ public class Serializador {
             c.printStackTrace();
             
         }
+        System.out.println("SERIALIZA doc");
         return documentos;
     }
 

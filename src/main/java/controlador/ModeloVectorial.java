@@ -20,15 +20,30 @@ import java.util.Map;
 import java.util.Set;
 import java.util.StringTokenizer;
 import java.util.TreeMap;
+import javax.annotation.PostConstruct;
+import javax.enterprise.context.ApplicationScoped;
 import soporte.Serializador;
 import utils.ParserPalabra;
 /**
  *
  * @author agu_9
  */
+@ApplicationScoped
 public class ModeloVectorial {
-     
-            
+    
+    private Vocabulario vocabulario;
+    private ArrayList<Documento> documentos;
+    
+    
+    public ModeloVectorial() {
+      
+    }
+    @PostConstruct
+    public void serializacion(){
+        Serializador sr = new Serializador();
+        vocabulario = sr.readVocabulario(); 
+        documentos = sr.readDocumentos();
+    }        
     public ArrayList<String> procesarTextoBusqueda(String q) {
         
         ArrayList<String> listadoPalabras = new ArrayList<>();
@@ -52,9 +67,6 @@ public class ModeloVectorial {
         ArrayList<Termino> queryTerminos;
         queryTerminos = new ArrayList<>();
         //Nos permite obtener el vocabulario serializado y la lista de documentos.
-        Serializador sr = new Serializador();
-        Vocabulario vocabulario = sr.readVocabulario(); 
-        ArrayList<Documento> documentos = sr.readDocumentos();
         //Hashmap que contiene cada termino
         HashMap<String, Termino> terminos;
         terminos = vocabulario.getVocabulario();
@@ -101,7 +113,7 @@ public class ModeloVectorial {
         //System.out.println(LD.get(0).getNombre());
         //System.out.println(queryTerminos);
         
-        return LD;
+        return LD.subList(0, r);
     }
     
 
