@@ -15,6 +15,7 @@ public class Documento implements Serializable, Comparable<Documento>{
     
     private String nombre;
     private String ruta;
+    private Double peso;
     
     private static final long serialVersionUID = 6529685098267757988L;
 
@@ -22,6 +23,7 @@ public class Documento implements Serializable, Comparable<Documento>{
     public Documento(String nombre, String ruta) {
         this.nombre = nombre;
         this.ruta = ruta;
+        this.peso = 0D;
     }
    
     public String getNombre() {
@@ -47,10 +49,20 @@ public class Documento implements Serializable, Comparable<Documento>{
 
     @Override
     public int compareTo(Documento o) {
-        return this.nombre.compareTo(o.nombre);
+        return this.peso.compareTo(o.peso);
+    }
+
+    public Double getPeso() {
+        return peso;
+    }
+
+    public void setPeso(Double peso) {
+        this.peso = peso;
     }
     
-    
+    public void incrementarPeso(Double peso){
+        this.peso = this.peso + peso;
+    }
     
     
     

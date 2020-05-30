@@ -16,7 +16,7 @@ import entidades.Posteo;
  *
  * @author lauti
  */
-public class Termino implements Serializable {
+public class Termino implements Serializable, Comparable<Termino> {
 
     //La palabra en cuestion
     private String palabra;
@@ -100,6 +100,11 @@ public class Termino implements Serializable {
      
          Collections.sort(posteos);
 
+    }
+
+    @Override
+    public int compareTo(Termino o) {
+        return this.nr.compareTo(o.nr);
     }
 
 }

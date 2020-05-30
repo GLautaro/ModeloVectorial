@@ -11,6 +11,7 @@ import entidades.Vocabulario;
 import java.io.*;
 import java.nio.file.Files;
 import java.nio.file.Paths;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
@@ -32,6 +33,7 @@ public class IndexadorDocumentos {
     private Vocabulario vocabulario;
     private File[] listaDoc;
     private FilenameFilter filtro;
+    private ArrayList<Documento> listaSerialDoc = new ArrayList<>();
 
     public IndexadorDocumentos() {
         this.rutaCarpeta = Configuracion.RUTA_CARPETA_DOCUMENTOS;
@@ -75,7 +77,7 @@ public class IndexadorDocumentos {
     
     
     private void leerDocumentos(File documento){
-        
+                
         try {
             FileReader fr = new FileReader(documento);
             BufferedReader br = new BufferedReader(fr);
@@ -86,6 +88,7 @@ public class IndexadorDocumentos {
             String rutaDocumento = documento.getPath();
             
             Documento nuevoDoc = new Documento(nombreDocumento, rutaDocumento);
+            listaSerialDoc.add(nuevoDoc);
                     
             
             while (lineaTexto != null) {
@@ -137,6 +140,10 @@ public class IndexadorDocumentos {
 
     public Vocabulario getVocabulario() {
         return vocabulario;
+    }
+
+    public ArrayList<Documento> getListaDoc() {
+        return listaSerialDoc;
     }
         
     

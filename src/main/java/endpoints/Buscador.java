@@ -8,7 +8,7 @@ package endpoints;
 import controlador.ModeloVectorial;
 import entidades.Documento;
 import static java.nio.file.Files.list;
-import java.util.ArrayList;
+import java.util.List;
 import javax.inject.Inject;
 import javax.ws.rs.GET;
 import javax.ws.rs.core.Response;
@@ -29,7 +29,7 @@ public class Buscador {
     @Produces("application/json")
     public Response buscar(@QueryParam("q") String q, @QueryParam("r") Integer r) {
         ModeloVectorial mv = new ModeloVectorial();
-        ArrayList<Documento> resultado = mv.procesarBusqueda(q, r);
+        List<Documento> resultado = mv.procesarBusqueda(q, r);
         return Response.ok(resultado).build();
     }
 

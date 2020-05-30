@@ -37,15 +37,17 @@ public class TestIndexador {
         Vocabulario voc = inDoc.getVocabulario();
         HashMap hs = voc.getVocabulario();
         System.out.println(hs.size());
+        System.out.println(inDoc.getListaDoc().toString());
 
         // Esta comentada para que no vuelva a hacer la serializacion
         ser.writeVocabulario(inDoc.getVocabulario());
+        ser.writeDocumentos(inDoc.getListaDoc());
 
         //ser.readVocabulario();
 
         //System.out.println(inDoc.getVocabulario().toString());
-        ModeloVectorial mv = new ModeloVectorial();
-        ArrayList<Documento> docs = mv.procesarBusqueda("get", 2);
+        //ModeloVectorial mv = new ModeloVectorial();
+        //ArrayList<Documento> docs = mv.procesarBusqueda("get", 2);
 
         /*
         for (Documento next : docs) {
