@@ -43,7 +43,7 @@ public class Serializador {
     public Vocabulario readVocabulario() {
         Vocabulario vocabulario = null;
         try {
-            FileInputStream file = new FileInputStream(Configuracion.RUTA_ARCHIVO_SERIALIZADO);
+            FileInputStream file = new FileInputStream("C:\\Projects\\ModeloVectorial\\vocabulario.dat");
             ObjectInputStream obj = new ObjectInputStream(file);
             vocabulario = (Vocabulario) obj.readObject();
             obj.close();
@@ -78,7 +78,7 @@ public class Serializador {
     public ArrayList<Documento> readDocumentos(){
         ArrayList<Documento> documentos = null;
         try {
-            FileInputStream file = new FileInputStream(Configuracion.RUTA_LISTA_DOC_SERIALIZADO);
+            FileInputStream file = new FileInputStream("C:\\Projects\\ModeloVectorial\\documentos.dat");
             ObjectInputStream obj = new ObjectInputStream(file);
             documentos = (ArrayList<Documento>) obj.readObject();
             obj.close();

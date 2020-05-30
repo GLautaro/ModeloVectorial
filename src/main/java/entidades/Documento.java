@@ -49,7 +49,7 @@ public class Documento implements Serializable, Comparable<Documento>{
 
     @Override
     public int compareTo(Documento o) {
-        return this.peso.compareTo(o.peso);
+        return o.peso.compareTo(this.peso);
     }
 
     public Double getPeso() {

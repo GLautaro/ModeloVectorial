@@ -48,7 +48,7 @@ public class IndexadorDocumentos {
     
     private void inicializarCarpeta(){
         try {
-            carpeta = new File(rutaCarpeta);
+            carpeta = new File("C:\\Users\\agu_9\\Desktop\\lotes");
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }

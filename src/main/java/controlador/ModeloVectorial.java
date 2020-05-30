@@ -60,8 +60,8 @@ public class ModeloVectorial {
         terminos = vocabulario.getVocabulario();
         //Terminos de la consulta
         ArrayList<String> query = procesarTextoBusqueda(q);
-        
         //Comienza a procesar
+        
         for (String palabra : query) {
             Termino termActual = terminos.get(palabra);
             if(termActual != null && !queryTerminos.contains(termActual)){
@@ -85,19 +85,23 @@ public class ModeloVectorial {
                 if(!LD.contains(doc)){
                     LD.add(doc);
                 }                
-                Double pesoDoc = posteo.getTf() * Math.log10(documentos.size()/queryTermino.getNr());
+                float division = ((float)documentos.size()/(float)queryTermino.getNr());
+                Double logaritmo = Math.log10(division);
+                Double pesoDoc = posteo.getTf() * logaritmo;
                 doc.incrementarPeso(pesoDoc);
             }            
         }
         
         Collections.sort(LD);
         
-   
+        if(r>LD.size()){
+            r=LD.size();
+        }
         
         //System.out.println(LD.get(0).getNombre());
         //System.out.println(queryTerminos);
-
-        return LD.subList(0, r);
+        
+        return LD;
     }
     
 
