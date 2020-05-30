@@ -12,6 +12,7 @@ import java.io.*;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
@@ -64,9 +65,9 @@ public class IndexadorDocumentos {
             leerDocumentos(file);
         }
         
-        Set<Map.Entry<String, Termino>> voc = vocabulario.getVocabulario().entrySet();
+        HashMap<String, Termino> terminos = vocabulario.getVocabulario();
         
-        voc.forEach((entry) -> {
+        terminos.entrySet().forEach((entry) -> {
             entry.getValue().ordenarPosteo();
         });
       

@@ -6,11 +6,13 @@
 package controlador;
 
 import entidades.Documento;
+import entidades.Posteo;
 import entidades.Termino;
 import entidades.Vocabulario;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
+import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.Set;
 import java.util.StringTokenizer;
@@ -59,14 +61,12 @@ public class ModeloVectorial {
             Termino termActual = terminos.get(palabra);
             if(termActual != null && !queryTerminos.contains(termActual)){
                 //queryTerminos.add(termActual);
-                TreeMap<Documento, Integer> posteos = termActual.getPosteos();
-                Set<Map.Entry<Documento, Integer>> docs = posteos.entrySet();
+                ArrayList<Posteo> posteos = termActual.getPosteos();
                 
-                for (Map.Entry<Documento, Integer> doc : docs) {
-                    System.out.println(doc.getKey());
-                    System.out.println(doc.getValue());
+                             
+                for (Posteo posteo : posteos) {
 
-                    LD.add(doc.getKey());                   
+                    LD.add(posteo.getDocumento());                   
                 }
                 
                 
