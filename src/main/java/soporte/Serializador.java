@@ -41,7 +41,7 @@ public class Serializador {
     public Vocabulario readVocabulario() {
         Vocabulario vocabulario = null;
         try {
-            FileInputStream file = new FileInputStream("vocabulario.dat");
+            FileInputStream file = new FileInputStream("C:\\Projects\\ModeloVectorial\\vocabulario.dat");
             ObjectInputStream obj = new ObjectInputStream(file);
             vocabulario = (Vocabulario) obj.readObject();
             obj.close();
