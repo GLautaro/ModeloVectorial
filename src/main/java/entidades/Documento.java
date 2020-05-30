@@ -15,6 +15,8 @@ public class Documento implements Serializable{
     
     private String nombre;
     private String ruta;
+    private static final long serialVersionUID = 6529685098267757690L;
+
 
     public Documento(String nombre, String ruta) {
         this.nombre = nombre;
@@ -36,6 +38,12 @@ public class Documento implements Serializable{
     public void setRuta(String ruta) {
         this.ruta = ruta;
     }
+
+    @Override
+    public String toString() {
+        return "Documento: " + "nombre:" + nombre + ", ruta:" + ruta + '}';
+    }
+    
     
     
     

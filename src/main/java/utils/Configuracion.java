@@ -12,7 +12,7 @@ package utils;
  */
 public class Configuracion {
     
-    public static final String RUTA_CARPETA_DOCUMENTOS = "C:\\Users\\agu_9\\Desktop\\Iteracion";
+    public static final String RUTA_CARPETA_DOCUMENTOS = "C:\\Documentos";
     public static final String SEPARADORES = "[1234567890,-.!¡?¿()_ /:%&;#\"$*{}]$=+@|°¬'+~^<>«»*";
 
 }

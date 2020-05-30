@@ -10,6 +10,8 @@ import entidades.Termino;
 import entidades.Vocabulario;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Set;
 import java.util.StringTokenizer;
 import soporte.Serializador;
 import utils.ParserPalabra;
@@ -36,24 +38,38 @@ public class ModeloVectorial {
     }
     
     
-    public void procesarBusqueda(String q, Integer r){
-        ArrayList<Documento> LD = null;
-        ArrayList<Termino> queryTerminos = new ArrayList<>();
+    public ArrayList<Documento> procesarBusqueda(String q, Integer r){
+        ArrayList<Documento> LD = new ArrayList<>();
+        
+        ArrayList<Termino> queryTerminos;
+        queryTerminos = new ArrayList<>();
+        
         Serializador sr = new Serializador();
-        Vocabulario vocabulario = sr.readVocabulario();   
-        HashMap<String, Termino> terminos = vocabulario.getVocabulario();
+        Vocabulario vocabulario = sr.readVocabulario(); 
+        
+        HashMap<String, Termino> terminos;
+        terminos = vocabulario.getVocabulario();
         
         ArrayList<String> query = procesarTextoBusqueda(q);
         
+        //Comienza a procesar
         for (String palabra : query) {
             Termino termActual = terminos.get(palabra);
-            if(!queryTerminos.contains(termActual)){
-                queryTerminos.add(termActual);
+            if(termActual != null && !queryTerminos.contains(termActual)){
+                //queryTerminos.add(termActual);
+                HashMap<Documento, Integer> posteos = termActual.getPosteos();
+                Set<Documento> docs = posteos.keySet();
+                
+                LD.addAll(docs);
+                
+                
             }                
         }
         
-        System.out.println(queryTerminos);
+        //System.out.println(LD.get(0).getNombre());
+        //System.out.println(queryTerminos);
 
+        return LD;
     }
     
     

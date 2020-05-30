@@ -6,9 +6,12 @@
 package soporte;
 
 import controlador.ModeloVectorial;
+import entidades.Documento;
 
 import entidades.Vocabulario;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Iterator;
 
 /**
  *
@@ -25,13 +28,19 @@ public class TestIndexador {
         HashMap hs = voc.getVocabulario();
         System.out.println(hs.size());
 
+        // Esta comentada para que no vuelva a hacer la serializacion
         ser.writeVocabulario(inDoc.getVocabulario());
+        
         ser.readVocabulario();
 
-        System.out.println(inDoc.getVocabulario().toString());
+        //System.out.println(inDoc.getVocabulario().toString());
         
         ModeloVectorial mv = new ModeloVectorial();
-        mv.procesarBusqueda("Copyright laws", 2);
+        ArrayList<Documento> docs = mv.procesarBusqueda("Copyright laws", 2);
+        
+        for (Documento next : docs) {
+            System.out.println(next.toString());
+        }
 
     }
     
