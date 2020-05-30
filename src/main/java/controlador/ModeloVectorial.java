@@ -61,18 +61,13 @@ public class ModeloVectorial {
             Termino termActual = terminos.get(palabra);
             if(termActual != null && !queryTerminos.contains(termActual)){
                 //queryTerminos.add(termActual);
-                ArrayList<Posteo> posteos = termActual.getPosteos();
-                
-                             
+                ArrayList<Posteo> posteos = termActual.getPosteos();                 
                 for (Posteo posteo : posteos) {
-
                     LD.add(posteo.getDocumento());                   
-                }
-                
-                
-                
+                }        
             }                
         }
+   
         
         //System.out.println(LD.get(0).getNombre());
         //System.out.println(queryTerminos);

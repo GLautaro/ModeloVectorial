@@ -26,8 +26,7 @@ public class Termino implements Serializable {
     private Integer maxTf;
     //Posteo: significa que la palabra aparezca en un documento. Se almacena el documento y la Tf 
     private ArrayList<Posteo> posteos;
-    
-    private static final long serialVersionUID = 6529685098267757111L;
+     private static final long serialVersionUID = 6529685098267757690L;
 
     public Termino(String palabra) {
         this.palabra = palabra;
@@ -78,22 +77,21 @@ public class Termino implements Serializable {
         }
     }
 
-    public void agregarPosteo(Documento doc) {
+    void agregarPosteo(Documento doc) {
         if(posteos.isEmpty()){
              this.posteos.add(new Posteo(doc));
-             nr++;
-             return;
+                nr++;
+                return;
         }
         for (Posteo posteo : this.posteos) {
             if (posteo.getDocumento() == doc) {
                 posteo.incrementarTf();
-                break;
-            } else {
-                this.posteos.add(new Posteo(doc));
-                nr++;
-                break;
+                return;
             }
         }
+        this.posteos.add(new Posteo(doc));
+        nr++;
+             
 
     }
 

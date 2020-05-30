@@ -51,7 +51,7 @@ public class Posteo implements Serializable, Comparable<Posteo> {
 
     @Override
     public int compareTo(Posteo o) {
-        return this.tf.compareTo(o.tf);
+        return o.tf.compareTo(this.tf);
     }
     
 

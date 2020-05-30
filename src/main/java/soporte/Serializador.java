@@ -15,6 +15,7 @@ import java.io.ObjectOutputStream;
 import java.util.HashMap;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import utils.Configuracion;
 
 /**
  *
@@ -41,7 +42,7 @@ public class Serializador {
     public Vocabulario readVocabulario() {
         Vocabulario vocabulario = null;
         try {
-            FileInputStream file = new FileInputStream("C:\\Projects\\ModeloVectorial\\vocabulario.dat");
+            FileInputStream file = new FileInputStream(Configuracion.RUTA_ARCHIVO_SERIALIZADO);
             ObjectInputStream obj = new ObjectInputStream(file);
             vocabulario = (Vocabulario) obj.readObject();
             obj.close();
