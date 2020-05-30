@@ -13,7 +13,9 @@ import javax.inject.Inject;
 import javax.ws.rs.GET;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.Path;
+import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
+import javax.ws.rs.QueryParam;
 
 /**
  *
@@ -25,10 +27,9 @@ public class Buscador {
     @GET
     @Path("/")
     @Produces("application/json")
-    public Response cargar() {
-
+    public Response buscar(@QueryParam("q") String q, @QueryParam("r") Integer r) {
         ModeloVectorial mv = new ModeloVectorial();
-        ArrayList<Documento> resultado = mv.procesarBusqueda("Copyright", 2);
+        ArrayList<Documento> resultado = mv.procesarBusqueda(q, r);
         return Response.ok(resultado).build();
     }
 
