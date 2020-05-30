@@ -6,12 +6,15 @@
 package soporte;
 
 import entidades.Documento;
+import entidades.Termino;
 import entidades.Vocabulario;
 import java.io.*;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Map;
+import java.util.Set;
 import java.util.StringTokenizer;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -60,6 +63,12 @@ public class IndexadorDocumentos {
         for (File file : listaDoc) {
             leerDocumentos(file);
         }
+        
+        Set<Map.Entry<String, Termino>> voc = vocabulario.getVocabulario().entrySet();
+        
+        voc.forEach((entry) -> {
+            entry.getValue().ordenarPosteo();
+        });
       
     } 
     

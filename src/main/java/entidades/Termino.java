@@ -6,7 +6,13 @@
 package entidades;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.HashMap;
+import java.util.Map.Entry;
+import java.util.Set;
 import java.util.TreeMap;
 
 /**
@@ -22,13 +28,14 @@ public class Termino implements Serializable{
     //MaxTf: maxima cantidad de veces que aparece el termino por documento
     private Integer maxTf;
     //Posteo: significa que la palabra aparezca en un documento. Se almacena el documento y la Tf 
-    private HashMap<Documento, Integer> posteos;
+    private TreeMap<Documento, Integer> posteos;
+    
 
     public Termino(String palabra) {
         this.palabra = palabra;
         nr = 0;
         maxTf = 1;
-        posteos = new HashMap<>();
+        posteos = new TreeMap<>();
     }
     
 
@@ -56,11 +63,11 @@ public class Termino implements Serializable{
         this.maxTf = maxTf;
     }
 
-    public HashMap<Documento, Integer> getPosteos() {
+    public TreeMap<Documento, Integer> getPosteos() {
         return posteos;
     }
 
-    public void setPosteos(HashMap<Documento, Integer> posteos) {
+    public void setPosteos(TreeMap<Documento, Integer> posteos) {
         this.posteos = posteos;
     }
     
@@ -87,8 +94,29 @@ public class Termino implements Serializable{
     
     private void incrementarPosteo(Documento doc){
         Integer frecNueva = posteos.get(doc);
+        frecNueva++;
         maxTf = Math.max(frecNueva, maxTf);
-        posteos.replace(doc, frecNueva);
+        posteos.replace(doc, maxTf);
+    }
+    
+    public void ordenarPosteo(){
+    
+        Set<Entry<Documento, Integer>> set = posteos.entrySet();
+        ArrayList<Entry<Documento, Integer>> lista = new ArrayList<>(set);
+        
+        Collections.sort(lista, new Comparator<Entry<Documento, Integer>>() {
+            @Override
+            public int compare(Entry<Documento, Integer> a, Entry<Documento, Integer> b) {
+                return b.getValue().compareTo(a.getValue());
+            }
+        });
+       
+        posteos.clear();
+        
+        lista.forEach((entry) -> {
+            posteos.put(entry.getKey(), entry.getValue());
+        });
+        
     }
     
     

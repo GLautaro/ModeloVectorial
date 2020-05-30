@@ -11,7 +11,7 @@ import java.io.Serializable;
  *
  * @author lauti
  */
-public class Documento implements Serializable{
+public class Documento implements Serializable, Comparable<Documento>{
     
     private String nombre;
     private String ruta;
@@ -43,6 +43,13 @@ public class Documento implements Serializable{
     public String toString() {
         return "Documento: " + "nombre:" + nombre + ", ruta:" + ruta + '}';
     }
+
+    @Override
+    public int compareTo(Documento o) {
+        return this.nombre.compareTo(o.nombre);
+    }
+    
+    
     
     
     

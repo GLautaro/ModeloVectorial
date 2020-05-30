@@ -26,20 +26,20 @@ public class TestIndexador {
         
         IndexadorDocumentos inDoc = new IndexadorDocumentos();
         Serializador ser = new Serializador();
-/*
+
         inDoc.indexarDocumentos();
         Vocabulario voc = inDoc.getVocabulario();
         HashMap hs = voc.getVocabulario();
         System.out.println(hs.size());
 
         // Esta comentada para que no vuelva a hacer la serializacion
-        ser.writeVocabulario(inDoc.getVocabulario());
+        //ser.writeVocabulario(inDoc.getVocabulario());
 
-        ser.readVocabulario();
-*/
+        //ser.readVocabulario();
+
         //System.out.println(inDoc.getVocabulario().toString());
         ModeloVectorial mv = new ModeloVectorial();
-        ArrayList<Documento> docs = mv.procesarBusqueda("Copyright laws", 2);
+        ArrayList<Documento> docs = mv.procesarBusqueda("get", 2);
 
         for (Documento next : docs) {
             System.out.println(next.toString());

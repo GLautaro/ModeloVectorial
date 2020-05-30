@@ -11,6 +11,7 @@ import entidades.Vocabulario;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
+import java.util.Map;
 import java.util.Set;
 import java.util.StringTokenizer;
 import java.util.TreeMap;
@@ -58,10 +59,16 @@ public class ModeloVectorial {
             Termino termActual = terminos.get(palabra);
             if(termActual != null && !queryTerminos.contains(termActual)){
                 //queryTerminos.add(termActual);
-                HashMap<Documento, Integer> posteos = termActual.getPosteos();
-                Set<Documento> docs = posteos.keySet();
+                TreeMap<Documento, Integer> posteos = termActual.getPosteos();
+                Set<Map.Entry<Documento, Integer>> docs = posteos.entrySet();
                 
-                LD.addAll(docs);
+                for (Map.Entry<Documento, Integer> doc : docs) {
+                    System.out.println(doc.getKey());
+                    System.out.println(doc.getValue());
+
+                    LD.add(doc.getKey());                   
+                }
+                
                 
                 
             }                
