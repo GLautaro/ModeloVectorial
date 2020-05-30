@@ -15,6 +15,8 @@ import java.util.HashMap;
 public class Vocabulario implements Serializable{
     
     private HashMap<String, Termino> vocabulario;
+    
+    private static final long serialVersionUID = 6529685098267757001L;
 
     public Vocabulario() {
         vocabulario = new HashMap<>();

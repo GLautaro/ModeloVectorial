@@ -17,6 +17,8 @@ public class Posteo implements Serializable, Comparable<Posteo> {
     private Documento documento;
     private Integer tf;
     
+
+    
     public Posteo(Documento documento) {
         this.documento = documento;
         this.tf = 1;

@@ -39,7 +39,7 @@ public class TestIndexador {
         System.out.println(hs.size());
 
         // Esta comentada para que no vuelva a hacer la serializacion
-        //ser.writeVocabulario(inDoc.getVocabulario());
+        ser.writeVocabulario(inDoc.getVocabulario());
 
         //ser.readVocabulario();
 

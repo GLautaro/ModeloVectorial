@@ -15,7 +15,8 @@ public class Documento implements Serializable, Comparable<Documento>{
     
     private String nombre;
     private String ruta;
-    private static final long serialVersionUID = 6529685098267757690L;
+    
+    private static final long serialVersionUID = 6529685098267757988L;
 
 
     public Documento(String nombre, String ruta) {
