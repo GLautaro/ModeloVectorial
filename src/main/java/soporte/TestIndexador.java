@@ -47,10 +47,11 @@ public class TestIndexador {
         ModeloVectorial mv = new ModeloVectorial();
         ArrayList<Documento> docs = mv.procesarBusqueda("get", 2);
 
+        /*
         for (Documento next : docs) {
             System.out.println(next.toString());
         }
-        
+        */
      
      
       
