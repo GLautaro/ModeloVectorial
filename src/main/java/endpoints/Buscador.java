@@ -22,18 +22,24 @@ import javax.ws.rs.QueryParam;
  *
  * @author agu_9
  */
-
 @Path("/buscador")
 public class Buscador {
-    
-    @Inject ModeloVectorial mv;
-    
+
+    @Inject
+    ModeloVectorial mv;
+
     @GET
     @Path("/")
     @Produces("application/json")
     public Response buscar(@QueryParam("q") String q, @QueryParam("r") Integer r) {
         List<Documento> resultado = mv.procesarBusqueda(q, r);
-        return Response.ok(resultado).build();
+        return Response.ok(resultado)
+                .header("Access-Control-Allow-Origin", "*")
+                .header("Access-Control-Allow-Credentials", "true")
+                .header("Access-Control-Allow-Headers",
+                        "origin, content-type, accept, authorization")
+                .header("Access-Control-Allow-Methods",
+                        "GET, POST, PUT, DELETE, OPTIONS, HEAD").build();
     }
 
 }

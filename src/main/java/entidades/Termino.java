@@ -35,6 +35,14 @@ public class Termino implements Serializable, Comparable<Termino> {
         posteos = new ArrayList<>();
     }
 
+    public Termino(String palabra, Integer nr) {
+        this.palabra = palabra;
+        this.nr = nr;
+        maxTf = 1;
+        posteos = new ArrayList<>();
+    }
+    
+
     public String getPalabra() {
         return palabra;
     }

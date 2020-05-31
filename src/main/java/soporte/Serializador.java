@@ -67,7 +67,7 @@ public class Serializador {
     
     public void writeDocumentos(HashMap <String, Documento> listaDoc){
         try {
-            FileOutputStream fos = new FileOutputStream("documentos2.dat");
+            FileOutputStream fos = new FileOutputStream("documentos.dat");
             ObjectOutputStream oos = new ObjectOutputStream(fos);
             oos.writeObject(listaDoc);
             oos.close();
@@ -84,7 +84,7 @@ public class Serializador {
     public HashMap<String, Documento> readDocumentos(){
         HashMap<String, Documento> documentos = null;
         try {
-            FileInputStream file = new FileInputStream("C:\\Projects\\ModeloVectorial\\documentos2.dat");
+            FileInputStream file = new FileInputStream("D:\\DLC\\ModeloVectorial\\documentos.dat");
           
             ObjectInputStream obj = new ObjectInputStream(file);
             documentos = (HashMap<String, Documento>) obj.readObject();

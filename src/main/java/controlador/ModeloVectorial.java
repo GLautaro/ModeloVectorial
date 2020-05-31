@@ -22,7 +22,9 @@ import java.util.StringTokenizer;
 import java.util.TreeMap;
 import javax.annotation.PostConstruct;
 import javax.enterprise.context.ApplicationScoped;
+import soporte.AlmacenamientoDisco;
 import soporte.Serializador;
+import utils.Configuracion;
 import utils.ParserPalabra;
 
 /**
@@ -32,8 +34,10 @@ import utils.ParserPalabra;
 @ApplicationScoped
 public class ModeloVectorial {
 
-    private Vocabulario vocabulario;
+    
     private HashMap<String, Documento> documentos = new HashMap<>();
+    private AlmacenamientoDisco ad;
+
 
     public ModeloVectorial() {
 
@@ -42,14 +46,14 @@ public class ModeloVectorial {
     @PostConstruct
     public void serializacion() {
         Serializador sr = new Serializador();
-        vocabulario = sr.readVocabulario();
         documentos = sr.readDocumentos();
+        ad = new AlmacenamientoDisco();
     }
 
     public ArrayList<String> procesarTextoBusqueda(String q) {
 
         ArrayList<String> listadoPalabras = new ArrayList<>();
-        String separador = "[1234567890,-.!¡?¿()_ /:%&;#\"$*{}]$=+@|°¬'+~^<>«»*";
+        String separador = Configuracion.SEPARADORES;
         StringTokenizer st = new StringTokenizer(q, separador);
         int cantPalabras = st.countTokens();
         for (int i = 0; i < cantPalabras; i++) {
@@ -64,34 +68,17 @@ public class ModeloVectorial {
     public List<Documento> procesarBusqueda(String q, Integer r) {
         //Lista de documentos a retornar
         List<Documento> LD = new ArrayList<>();
-        //Lista de terminos a procesar
-        ArrayList<Termino> queryTerminos;
-        queryTerminos = new ArrayList<>();
-        //Nos permite obtener el vocabulario serializado y la lista de documentos.
-        //Hashmap que contiene cada termino
-        HashMap<String, Termino> terminos;
-        terminos = vocabulario.getVocabulario();
         //Terminos de la consulta
         ArrayList<String> query = procesarTextoBusqueda(q);
         //Comienza a procesar
-
-        for (String palabra : query) {
-            Termino termActual = terminos.get(palabra);
-            if (termActual != null && !queryTerminos.contains(termActual)) {
-                queryTerminos.add(termActual);
-
-                /*
-                ArrayList<Posteo> posteos = termActual.getPosteos();                 
-                for (Posteo posteo : posteos) {
-                    LD.add(posteo.getDocumento());                   
-                } */
-            }
-        }
+        ArrayList<Termino> terminos = ad.leerPosteos(query);
+        
+        
         //Tengo la lista de termino a procesar ordenada por Nr.
-        Collections.sort(queryTerminos);
+        Collections.sort(terminos);
 
         //Agregar Documentos a LD
-        for (Termino queryTermino : queryTerminos) {
+        for (Termino queryTermino : terminos) {
             ArrayList<Posteo> posteos = queryTermino.getPosteos();
 
             for (Posteo posteo : posteos) {
