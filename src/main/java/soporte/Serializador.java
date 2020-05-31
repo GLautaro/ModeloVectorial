@@ -13,7 +13,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
-import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import utils.Configuracion;
@@ -65,9 +65,9 @@ public class Serializador {
         
     }
     
-    public void writeDocumentos(ArrayList<Documento> listaDoc){
+    public void writeDocumentos(HashMap <String, Documento> listaDoc){
         try {
-            FileOutputStream fos = new FileOutputStream("documentos.dat");
+            FileOutputStream fos = new FileOutputStream("documentos2.dat");
             ObjectOutputStream oos = new ObjectOutputStream(fos);
             oos.writeObject(listaDoc);
             oos.close();
@@ -81,12 +81,13 @@ public class Serializador {
         }
     }
     
-    public ArrayList<Documento> readDocumentos(){
-        ArrayList<Documento> documentos = null;
+    public HashMap<String, Documento> readDocumentos(){
+        HashMap<String, Documento> documentos = null;
         try {
-            FileInputStream file = new FileInputStream("C:\\Projects\\ModeloVectorial\\documentos.dat");
+            FileInputStream file = new FileInputStream("C:\\Projects\\ModeloVectorial\\documentos2.dat");
+          
             ObjectInputStream obj = new ObjectInputStream(file);
-            documentos = (ArrayList<Documento>) obj.readObject();
+            documentos = (HashMap<String, Documento>) obj.readObject();
             obj.close();
             file.close();
         } catch (IOException ioe) {

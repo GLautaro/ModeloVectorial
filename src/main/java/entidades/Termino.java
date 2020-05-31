@@ -79,17 +79,17 @@ public class Termino implements Serializable, Comparable<Termino> {
 
     void agregarPosteo(Documento doc) {
         if(posteos.isEmpty()){
-             this.posteos.add(new Posteo(doc));
+             this.posteos.add(new Posteo(doc.getNombre()));
                 nr++;
                 return;
         }
         for (Posteo posteo : this.posteos) {
-            if (posteo.getDocumento() == doc) {
+            if (posteo.getDocumento() == doc.getNombre()) {
                 posteo.incrementarTf();
                 return;
             }
         }
-        this.posteos.add(new Posteo(doc));
+    this.posteos.add(new Posteo(doc.getNombre()));
         nr++;
              
 

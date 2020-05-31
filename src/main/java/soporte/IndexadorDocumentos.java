@@ -33,7 +33,7 @@ public class IndexadorDocumentos {
     private Vocabulario vocabulario;
     private File[] listaDoc;
     private FilenameFilter filtro;
-    private ArrayList<Documento> listaSerialDoc = new ArrayList<>();
+    private HashMap<String, Documento> listaSerialDoc = new HashMap<>();
 
     public IndexadorDocumentos() {
         this.rutaCarpeta = Configuracion.RUTA_CARPETA_DOCUMENTOS;
@@ -48,7 +48,7 @@ public class IndexadorDocumentos {
     
     private void inicializarCarpeta(){
         try {
-            carpeta = new File("C:\\Users\\agu_9\\Desktop\\lotes");
+            carpeta = new File("C:\\Users\\agu_9\\Desktop\\DocumentosTP1");
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }
@@ -57,11 +57,7 @@ public class IndexadorDocumentos {
     
     public void indexarDocumentos(){
         inicializarCarpeta();
-        try {
-            System.out.println(carpeta.getCanonicalPath());
-        } catch (IOException ex) {
-            Logger.getLogger(IndexadorDocumentos.class.getName()).log(Level.SEVERE, null, ex);
-        }
+
         listaDoc = carpeta.listFiles(filtro);
         for (File file : listaDoc) {
             leerDocumentos(file);
@@ -88,7 +84,7 @@ public class IndexadorDocumentos {
             String rutaDocumento = documento.getPath();
             
             Documento nuevoDoc = new Documento(nombreDocumento, rutaDocumento);
-            listaSerialDoc.add(nuevoDoc);
+            listaSerialDoc.put(nuevoDoc.getNombre(), nuevoDoc);
                     
             
             while (lineaTexto != null) {
@@ -142,7 +138,7 @@ public class IndexadorDocumentos {
         return vocabulario;
     }
 
-    public ArrayList<Documento> getListaDoc() {
+    public HashMap<String, Documento> getListaDoc() {
         return listaSerialDoc;
     }
         

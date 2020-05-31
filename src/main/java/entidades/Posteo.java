@@ -14,26 +14,26 @@ import java.io.Serializable;
 public class Posteo implements Serializable, Comparable<Posteo> {
     
     
-    private Documento documento;
+    private String documento;
     private Integer tf;
     
 
     
-    public Posteo(Documento documento) {
+    public Posteo(String documento) {
         this.documento = documento;
         this.tf = 1;
     }
     
-    public Posteo(Documento documento, Integer tf) {
+    public Posteo(String documento, Integer tf) {
         this.documento = documento;
         this.tf = tf;
     }
 
-    public Documento getDocumento() {
+    public String getDocumento() {
         return documento;
     }
 
-    public void setDocumento(Documento documento) {
+    public void setDocumento(String documento) {
         this.documento = documento;
     }
 

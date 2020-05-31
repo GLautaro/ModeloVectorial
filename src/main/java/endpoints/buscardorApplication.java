@@ -13,7 +13,7 @@ import javax.ws.rs.core.Application;
  *
  * @author agu_9
  */
-@ApplicationPath("/api")
+@ApplicationPath("/")
 @ApplicationScoped
 public class buscardorApplication extends Application{
     

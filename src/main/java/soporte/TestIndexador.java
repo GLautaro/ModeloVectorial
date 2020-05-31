@@ -29,7 +29,7 @@ import java.util.TreeMap;
 public class TestIndexador {
 
     public static void main(String[] args) {
-       /* 
+      
         IndexadorDocumentos inDoc = new IndexadorDocumentos();
         Serializador ser = new Serializador();
 
@@ -42,16 +42,16 @@ public class TestIndexador {
         // Esta comentada para que no vuelva a hacer la serializacion
         ser.writeVocabulario(inDoc.getVocabulario());
         ser.writeDocumentos(inDoc.getListaDoc());
-
-        //ser.readVocabulario();
-        */
+         //ser.readVocabulario();
+        
         //System.out.println(inDoc.getVocabulario().toString());
         ModeloVectorial mv = new ModeloVectorial();
-        List<Documento> docs = mv.procesarBusqueda("dante get", 15);
+        mv.serializacion();
+        List<Documento> docs = mv.procesarBusqueda("dante get", 2);
         
         for (Documento next : docs) {
-            System.out.println(next.toString());
-        }
+          System.out.println(next.toString());
+       }
   
     }
 
