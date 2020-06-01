@@ -22,7 +22,7 @@ public class AlmacenamientoDisco {
         FileWriter fichero = null;
         PrintWriter pw = null;
         try {
-            fichero = new FileWriter("C:\\Projects\\ModeloVectorial\\posteos.txt");
+            fichero = new FileWriter("D:\\DLC\\ModeloVectorial\\posteos.txt");
             pw = new PrintWriter(fichero);
             
             Collection<Termino> terminos = voc.getVocabulario().values();
@@ -49,7 +49,7 @@ public class AlmacenamientoDisco {
         FileReader file = null;
         BufferedReader br = null;
         try {
-            file = new FileReader("C:\\Projects\\ModeloVectorial\\posteos.txt");
+            file = new FileReader("D:\\DLC\\ModeloVectorial\\posteos.txt");
             br = new BufferedReader(file);
             String lineaTexto = br.readLine();
             

@@ -22,7 +22,7 @@ public class TestIndexador {
         IndexadorDocumentos inDoc = new IndexadorDocumentos();
         Serializador ser = new Serializador();
 
-        
+       
         inDoc.indexarDocumentos();
         Vocabulario voc = inDoc.getVocabulario();
         HashMap hs = voc.getVocabulario();

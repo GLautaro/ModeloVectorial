@@ -94,8 +94,6 @@ public class ModeloVectorial {
             r = LD.size();
         }
 
-        //System.out.println(LD.get(0).getNombre());
-        //System.out.println(queryTerminos);
         return LD.subList(0, r);
     }
 

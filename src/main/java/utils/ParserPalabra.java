@@ -19,8 +19,8 @@ public class ParserPalabra {
     }
 
     private static String limpiarVocales(String token) {
-        String original = "áàäéèëíìïóòöúùüç";
-        String modificacion = "aaaeeeiiiooouuuc";
+        String original = "áàäãåéèëêíìïóòöúùüç";
+        String modificacion = "aaaaaeeeeiiiooouuuc";
 
         for (int z = 0; z < original.length(); z++) {
             token = token.replace(original.charAt(z), modificacion.charAt(z));
