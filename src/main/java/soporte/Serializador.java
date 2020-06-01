@@ -28,43 +28,6 @@ public class Serializador {
     }
     
     
-    
-    public void writeVocabulario(Vocabulario vocabulario) {
-        try {
-            FileOutputStream fos = new FileOutputStream("vocabulario.dat");
-            ObjectOutputStream oos = new ObjectOutputStream(fos);
-            oos.writeObject(vocabulario);
-            oos.close();
-            fos.close();
-            System.out.println("Vocabulario serializado en 'vocabulario.dat'.");
-
-        } catch (FileNotFoundException ex) {
-            Logger.getLogger(Serializador.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (IOException ex) {
-            Logger.getLogger(Serializador.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }
-
-    public Vocabulario readVocabulario() {
-        Vocabulario vocabulario = null;
-        try {
-            FileInputStream file = new FileInputStream("C:\\Projects\\ModeloVectorial\\vocabulario.dat");
-            ObjectInputStream obj = new ObjectInputStream(file);
-            vocabulario = (Vocabulario) obj.readObject();
-            obj.close();
-            file.close();
-        } catch (IOException ioe) {
-            ioe.printStackTrace();
-            
-        } catch (ClassNotFoundException c) {
-            c.printStackTrace();
-            
-        }
-        System.out.println("SERIALIZA");
-        return vocabulario;
-        
-    }
-    
     public void writeDocumentos(HashMap <String, Documento> listaDoc){
         try {
             FileOutputStream fos = new FileOutputStream("documentos.dat");
@@ -84,7 +47,8 @@ public class Serializador {
     public HashMap<String, Documento> readDocumentos(){
         HashMap<String, Documento> documentos = null;
         try {
-            FileInputStream file = new FileInputStream("D:\\DLC\\ModeloVectorial\\documentos.dat");
+            
+            FileInputStream file = new FileInputStream("C:\\Projects\\ModeloVectorial\\documentos.dat");
           
             ObjectInputStream obj = new ObjectInputStream(file);
             documentos = (HashMap<String, Documento>) obj.readObject();

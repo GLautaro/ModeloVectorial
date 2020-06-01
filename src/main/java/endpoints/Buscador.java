@@ -32,8 +32,13 @@ public class Buscador {
     @Path("/")
     @Produces("application/json")
     public Response buscar(@QueryParam("q") String q, @QueryParam("r") Integer r) {
+        
+        if(q.isEmpty() || r == null ){
+            return Response.status(400).build();
+        }
+        
         List<Documento> resultado = mv.procesarBusqueda(q, r);
-        return Response.ok(resultado)
+        return Response.ok(resultado).status(200)
                 .header("Access-Control-Allow-Origin", "*")
                 .header("Access-Control-Allow-Credentials", "true")
                 .header("Access-Control-Allow-Headers",

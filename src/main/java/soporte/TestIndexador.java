@@ -6,13 +6,9 @@
 package soporte;
 
 
-import controlador.ModeloVectorial;
-import entidades.Documento;
-import entidades.Termino;
+
 import entidades.Vocabulario;
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 
 /**
  *
@@ -22,7 +18,7 @@ public class TestIndexador {
 
     public static void main(String[] args) {
       
-        /*
+        
         IndexadorDocumentos inDoc = new IndexadorDocumentos();
         Serializador ser = new Serializador();
 
@@ -35,10 +31,9 @@ public class TestIndexador {
         
         ser.writeDocumentos(inDoc.getListaDoc());
         
-        
         AlmacenamientoDisco ad = new AlmacenamientoDisco();
-        //ad.escrituraPosteos(voc);
-        
+        ad.escrituraPosteos(voc);
+       /*
         ArrayList<String> terminosBuscar = new ArrayList<>();
         terminosBuscar.add("william");
         terminosBuscar.add("hola");
@@ -51,15 +46,15 @@ public class TestIndexador {
         //ser.writeVocabulario(inDoc.getVocabulario());
         //ser.writeDocumentos(inDoc.getListaDoc());
         //ser.readVocabulario();
-        //System.out.println(inDoc.getVocabulario().toString());*/
-        
+        //System.out.println(inDoc.getVocabulario().toString());
+       
         ModeloVectorial mv = new ModeloVectorial();
         mv.serializacion();
         List<Documento> docs = mv.procesarBusqueda("dante get", 2);
         for (Documento next : docs) {
         System.out.println(next.toString());
         }
-  
+        */
     }
 
 }

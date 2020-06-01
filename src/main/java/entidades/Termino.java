@@ -7,10 +7,7 @@ package entidades;
 
 import java.io.Serializable;
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.Collections;
-import java.util.Comparator;
-import entidades.Posteo;
 
 /**
  *
@@ -22,8 +19,6 @@ public class Termino implements Serializable, Comparable<Termino> {
     private String palabra;
     //nr: cantidad de documentos en los que el termino aparece
     private Integer nr;
-    //MaxTf: maxima cantidad de veces que aparece el termino por documento
-    private Integer maxTf;
     //Posteo: significa que la palabra aparezca en un documento. Se almacena el documento y la Tf 
     private ArrayList<Posteo> posteos;
      private static final long serialVersionUID = 6529685098267757690L;
@@ -31,14 +26,12 @@ public class Termino implements Serializable, Comparable<Termino> {
     public Termino(String palabra) {
         this.palabra = palabra;
         nr = 0;
-        maxTf = 1;
         posteos = new ArrayList<>();
     }
 
     public Termino(String palabra, Integer nr) {
         this.palabra = palabra;
         this.nr = nr;
-        maxTf = 1;
         posteos = new ArrayList<>();
     }
     
@@ -59,13 +52,8 @@ public class Termino implements Serializable, Comparable<Termino> {
         this.nr = nr;
     }
 
-    public Integer getMaxTf() {
-        return maxTf;
-    }
 
-    public void setMaxTf(Integer maxTf) {
-        this.maxTf = maxTf;
-    }
+
 
     public ArrayList<Posteo> getPosteos() {
         return posteos;
@@ -79,11 +67,7 @@ public class Termino implements Serializable, Comparable<Termino> {
         this.nr++;
     }
 
-    public void verificarMaxTf(Integer maxTf) {
-        if (this.maxTf < maxTf) {
-            this.maxTf = maxTf;
-        }
-    }
+  
 
     void agregarPosteo(Documento doc) {
         if(posteos.isEmpty()){
