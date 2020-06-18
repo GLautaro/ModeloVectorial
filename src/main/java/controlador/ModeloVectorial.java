@@ -15,6 +15,7 @@ import java.util.List;
 import java.util.StringTokenizer;
 import javax.annotation.PostConstruct;
 import javax.enterprise.context.ApplicationScoped;
+import javax.enterprise.context.RequestScoped;
 import soporte.AlmacenamientoDisco;
 import soporte.Serializador;
 import utils.Configuracion;
@@ -24,7 +25,7 @@ import utils.ParserPalabra;
  *
  * @author agu_9
  */
-@ApplicationScoped
+@RequestScoped
 public class ModeloVectorial {
 
     

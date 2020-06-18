@@ -21,7 +21,7 @@ public class Indexador {
     
     @GET
     @Path("/iniciar")
-    @Produces("application/json")
+    @Produces("text/plain")
     public Response indexarDocumentos() {
         IndexadorController indexCon = new IndexadorController();
         indexCon.iniciarIndexacion();        

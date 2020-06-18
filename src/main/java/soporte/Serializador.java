@@ -6,7 +6,6 @@
 package soporte;
 
 import entidades.Documento;
-import entidades.Vocabulario;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;

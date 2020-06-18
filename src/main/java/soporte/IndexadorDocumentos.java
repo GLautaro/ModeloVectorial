@@ -30,7 +30,7 @@ public class IndexadorDocumentos {
     private HashMap<String, Documento> listaSerialDoc = new HashMap<>();
 
     public IndexadorDocumentos() {
-        this.rutaCarpeta = Configuracion.RUTA_CARPETA_DOCUMENTOS;
+        this.rutaCarpeta = "D:\\DLC\\ModeloVectorial\\carpetadocumentos";
         vocabulario =  new Vocabulario();
         filtro = new FilenameFilter() {
             @Override
